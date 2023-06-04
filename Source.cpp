@@ -5,14 +5,15 @@
 
 using namespace std;
 
-class IMatrix {
+class Matrix {
 public:
 	virtual int size() const = 0;
 	virtual double get(int i, int j) const = 0;
 
-	IMatrix(const IMatrix& mtrx) = delete;
-	virtual ~IMatrix() = default;
-	IMatrix operator=(const IMatrix& mtrx) = delete;
+	Matrix(const Matrix& mtrx) = delete;
+	virtual ~Matrix() = default;
+	Matrix operator=(const Matrix& mtrx) = delete;
 protected:
-	IMatrix() = default;
+	Matrix() = default;
 };
+
