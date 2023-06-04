@@ -55,15 +55,35 @@ public:
 	int size() const override {
 		return _size;
 	};
+
 	double get(int i, int j) const override {
 		return _matrix[i * _size + j];
 	};
+};
 
+class Minor : public Matrix {
+	const Matrix& matrix;
+	int line;
+	int column;
 
+public:
+	Minor(const Matrix& matrix, int line, int column) : matrix(matrix), line(line), column(column) {};
+	int size() const override {
+		return matrix.size() - 1;
+	}
+	double get(int i, int j) const override {
+		if (i >= line)
+			++i;
+		if (j >= column)
+			++j;
+		return matrix.get(i, j);
+	}
 };
 
 int main()
 {
-	Matrixs matrix;
-	cout << matrix.get(2, 3) << endl;
+	Matrixs one;
+	cout << one.get(2, 3) << endl; 
+	Minor ll(one,4,3);
+	cout << ll.get(2, 3) << endl;
 }
