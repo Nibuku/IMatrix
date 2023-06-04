@@ -79,6 +79,19 @@ public:
 		return matrix.get(i, j);
 	}
 };
+double determinant(const Matrix& mtrx) {
+	return mtrx.get(0, 0) * mtrx.get(1, 1) - mtrx.get(0, 1) * mtrx.get(1, 0);
+	double sum = 0;
+	for (int j = 0; j < mtrx.size(); ++j) {
+		Minor mnr(mtrx, 0, j);
+		sum += pow(-1, j) * mtrx.get(0, j) * determinant(mnr);
+	}
+	return sum;
+}
+
+
+
+
 
 int main()
 {
@@ -86,4 +99,5 @@ int main()
 	cout << one.get(2, 3) << endl; 
 	Minor ll(one,4,3);
 	cout << ll.get(2, 3) << endl;
+	cout << determinant(one) << endl;
 }
