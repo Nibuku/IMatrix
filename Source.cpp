@@ -80,7 +80,9 @@ public:
 	}
 };
 double determinant(const Matrix& mtrx) {
-	return mtrx.get(0, 0) * mtrx.get(1, 1) - mtrx.get(0, 1) * mtrx.get(1, 0);
+	if (mtrx.size() == 2) {
+		return mtrx.get(0, 0) * mtrx.get(1, 1) - mtrx.get(0, 1) * mtrx.get(1, 0);
+	}
 	double sum = 0;
 	for (int j = 0; j < mtrx.size(); ++j) {
 		Minor mnr(mtrx, 0, j);
@@ -88,9 +90,6 @@ double determinant(const Matrix& mtrx) {
 	}
 	return sum;
 }
-
-
-
 
 
 int main()
